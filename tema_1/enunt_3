@@ -1,0 +1,7 @@
+3. (Problema cu stivă 2p) Fie un număr par n de tăruși distribuiți echidistant pe un cerc numerotați de la 1 la n (vezi figura). Țărușii trebuie legați cu fire metalice în așa fel încât aceste fire să nu se intersecteze.
+
+        Firele sunt reprezentate prin numere întregi, iar o soluție pentru problemă este dată printr-un vector de n întregi care reprezintă id-ul fiecărui fir asociat fiecărui tăruș. Doi țăruși i și j sunt conectați dacă au în dreptul lor același întreg (tarusi[i]==tarusi[j]).
+
+         Determinați în timp O(n) dacă o soluție dată este corectă sau nu. Exemplu1: Pentru n = 8 si vectorul tarusi= (1, 2, 2, 1, 3, 3, 4, 4) avem configurația validă (b).
+
+Exemplu2: Pentru n = 8 si vectorul tarusi= (1, 2, 2, 3, 1, 4, 3, 4) avem configurația invalidă (c).
