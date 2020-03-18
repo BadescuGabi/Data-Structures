@@ -1,0 +1,13 @@
+
+
+1. (2p) Implementati o stiva cu operatii push si pop folosind o lista. Push va insera elemente la inceputul listei si pop va sterge elemente de la inceputul listei.
+
+struct stiva{
+
+    int info;
+
+    stiva *next; 
+
+} *pointer_global_element_varf;
+
+Rulare pe: push 1, pop, push 2, push 3
