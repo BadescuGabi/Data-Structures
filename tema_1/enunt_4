@@ -1,0 +1,8 @@
+4. (Problema cu coadă 2p) Spunem ca o imagine digitala binara M este o matrice de m x m elemente (pixeli) 0 sau 1. Un element a al matricei este adiacent cu b, daca b se afla deasupra, la dreapta, dedesubtul, sau la stanga lui a in imaginea M.
+
+       Spunem ca doi pixeli 1 adiacenti apartin aceleiasi componente. Problema va cere sa etichetati pixelii imaginii astfel incat doi pixeli primesc aceeasi eticheta daca si numai daca apartin aceleiasi componente.
+
+       Hint: folositi o coadă sau o pereche de cozi ca să introduceți coordonatele i și j ale primei apariții de 1. După care, câtă vreme coada nu e vidă scoateți coordonatele, colorați și puneți toți vecinii care au 1 în coadă. Repetare pentru fiecare 1 rămas în matrice.
+
+        Bonus 2p: Problema se poate rezolva si cu paduri de multimi disjuncte (disjoint set forest - sau structura union-find), structura descrisa in Cormen.
+
