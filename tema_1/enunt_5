@@ -1,0 +1,5 @@
+5. (Problema bonus 2p) Fie v un vector de n componente intregi, neordonate.
+
+Spunem ca un element este majoritar in v daca apare de cel putin n/2 + 1 ori in v.
+
+Descrieti si implementati un algoritm ce ruleaza in timp O(n) care sa decida daca exista un element majoritar, si, daca da, sa il afiseze.
