@@ -34,7 +34,7 @@ void heap_pop(int *a, int &n) {
     n--;
     int i = 1;
     int j = 2 * i;
-    while (j <= n) {
+    while (j < n) { //pusesem =
         int ok = 0;
         if (a[j] < a[j + 1]) {
             if (a[i] > a[j]) {
