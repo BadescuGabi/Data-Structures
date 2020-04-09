@@ -1,0 +1,132 @@
+#include <iostream>
+
+using namespace std;
+
+struct arbore {
+    int info;
+    arbore *stang, *drept;
+} *radacina;
+
+void insert(int x) {
+    int ok = 1;
+    arbore *new_arbore = new arbore;
+    new_arbore->info = x;
+    new_arbore->stang = NULL;
+    new_arbore->drept = NULL;
+    if (radacina == NULL) {
+        radacina = new_arbore;
+    } else {
+        arbore *cur = radacina;
+        while (ok) {
+            if (cur->info > new_arbore->info) {
+                if (cur->stang != NULL) {
+                    cur = cur->stang;
+                } else {
+                    cur->stang = new_arbore;
+                    ok = 0;
+                }
+            } else {
+                if (cur->drept != NULL) {
+                    cur = cur->drept;
+                } else {
+                    cur->drept = new_arbore;
+                    ok = 0;
+                }
+            }
+        }
+    }
+}
+
+void SRD(arbore *radacina) {
+    if (radacina != NULL) {
+        SRD(radacina->stang);
+        cout << radacina->info;
+        SRD(radacina->drept);
+    }
+}
+
+void RSD(arbore *radacina) {
+    if (radacina != NULL) {
+        cout << radacina->info;
+        RSD(radacina->stang);
+        RSD(radacina->drept);
+    }
+}
+
+int cauta(int cheie) {
+    static arbore *cur = radacina;
+    if (cheie == radacina->info)
+        return 1;
+    while (cur->stang != NULL and cur->drept != NULL) {
+        if (cheie > cur->info)
+            cur = cur->drept;
+        else {
+            cur = cur->stang;
+        }
+        if (cur->info == cheie)
+            return 1;
+    }
+    return 0;
+}
+
+arbore* minim(arbore *arbor){
+    arbore *curent=arbor;
+    while(curent->drept!=NULL){
+        curent=curent->drept;
+    }
+    return curent;
+}
+
+arbore* sterge(int cheie, arbore *&radacina) {
+    static int ok=1;
+    if (radacina == NULL)
+        return radacina;
+    if (radacina->info> cheie)
+        radacina->stang=sterge(cheie,*&radacina->stang);
+    if (radacina->info< cheie)
+        radacina->drept=sterge(cheie,*&radacina->drept);
+    if(ok==0){
+        return radacina;
+    }
+    if(radacina->stang== NULL and radacina->drept==NULL)
+    {
+        delete radacina;
+        radacina=NULL;
+        ok=0;
+        return radacina;
+    }
+    if(radacina->drept==NULL){
+        arbore *gasit=radacina->stang;
+        delete radacina;
+        radacina=gasit;
+        ok=0;
+        return radacina;
+    }
+    if(radacina->stang==NULL){
+        arbore *gasit=radacina->drept;
+        delete radacina;
+        radacina=gasit;
+        ok=0;
+        return radacina;
+    }
+    //daca are doi fii:
+    arbore *gasit=minim(radacina->stang);
+    radacina->info=gasit->info;
+    radacina->stang=sterge(gasit->info,radacina->stang);
+}
+int main() {
+    insert(6);
+    insert(4);
+    insert(9);
+    insert(2);
+    insert(1);
+    insert(5);
+    insert(3);
+    insert(7);
+    insert(8);
+    sterge(7, radacina);
+    SRD(radacina);
+    cout<<endl;
+    RSD(radacina);
+
+}
