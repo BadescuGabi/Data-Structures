@@ -1,0 +1,13 @@
+1. (3p) Implementati arbore binar de cautare cu operatiile:
+
+inserarea unei chei x
+cautarea unei chei x (zice 0/1)
+afisarea cheilor din arbore dupa SRD (inordine) si RSD (preordine)
+(+3p) stergerea unei chei x (o aparitie) cu pastrarea proprietatii de arbor binar de cautare
+
+
+2. (1p) Folositi un arbore binar de cautare ca sa sortati n siruri de caractere. Puteti folosi strcmp din string.h pentru comparare 
+lexicografica intre siruri de caractere.
+
+3. (1p) Pentru un arbore binar de cautare si doi intregi k1 si k2, sa se afiseze toate cheile din intervalul 
+deschis (k1,k2). Sa se omita parcurgerea subarborilor care nu pot contine solutii.ł
