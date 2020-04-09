@@ -69,52 +69,52 @@ int cauta(int cheie) {
     return 0;
 }
 
-arbore* minim(arbore *arbor){
-    arbore *curent=arbor;
-    while(curent->drept!=NULL){
-        curent=curent->drept;
+arbore *minim(arbore *arbor) {
+    arbore *curent = arbor;
+    while (curent->drept != NULL) {
+        curent = curent->drept;
     }
     return curent;
 }
 
-arbore* sterge(int cheie, arbore *&radacina) {
-    static int ok=1;
+arbore *sterge(int cheie, arbore *&radacina, int &ok) {
     if (radacina == NULL)
         return radacina;
-    if (radacina->info> cheie)
-        radacina->stang=sterge(cheie,*&radacina->stang);
-    if (radacina->info< cheie)
-        radacina->drept=sterge(cheie,*&radacina->drept);
-    if(ok==0){
+    if (radacina->info > cheie)
+        radacina->stang = sterge(cheie, *&radacina->stang, ok);
+    if (radacina->info < cheie)
+        radacina->drept = sterge(cheie, *&radacina->drept, ok);
+    if (ok == 0) {
         return radacina;
     }
-    if(radacina->stang== NULL and radacina->drept==NULL)
-    {
+    if (radacina->stang == NULL and radacina->drept == NULL) {
         delete radacina;
-        radacina=NULL;
-        ok=0;
+        radacina = NULL;
+        ok = 0;
         return radacina;
     }
-    if(radacina->drept==NULL){
-        arbore *gasit=radacina->stang;
+    if (radacina->drept == NULL) {
+        arbore *gasit = radacina->stang;
         delete radacina;
-        radacina=gasit;
-        ok=0;
+        radacina = gasit;
+        ok = 0;
         return radacina;
     }
-    if(radacina->stang==NULL){
-        arbore *gasit=radacina->drept;
+    if (radacina->stang == NULL) {
+        arbore *gasit = radacina->drept;
         delete radacina;
-        radacina=gasit;
-        ok=0;
+        radacina = gasit;
+        ok = 0;
         return radacina;
     }
     //daca are doi fii:
-    arbore *gasit=minim(radacina->stang);
-    radacina->info=gasit->info;
-    radacina->stang=sterge(gasit->info,radacina->stang);
+    arbore *gasit = minim(radacina->stang);
+    radacina->info = gasit->info;
+    radacina->stang = sterge(gasit->info, radacina->stang, ok);
 }
+
 int main() {
+    int ok = 1;
     insert(6);
     insert(4);
     insert(9);
@@ -124,9 +124,11 @@ int main() {
     insert(3);
     insert(7);
     insert(8);
-    sterge(7, radacina);
+    sterge(7, radacina, ok);
+    ok = 1;
+    sterge(6, radacina, ok);
+    ok = 1;
     SRD(radacina);
-    cout<<endl;
+    cout << endl;
     RSD(radacina);
-
 }
