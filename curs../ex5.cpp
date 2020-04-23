@@ -7,10 +7,10 @@ int mediana_2_vectori (int a[],int b[],int size){
         return 0;
     }
     if(size==1){
-        return (a[0]+b[0])/2;
+        return min(a[0],b[0]);
     }
     if(size==2){
-        return (max(a[0],b[0])+min(a[1],b[1]))/2;
+        return max(a[size/2-1],b[size/2-1]);
     }
     else{
         int med_a=a[size/2];
@@ -30,7 +30,7 @@ int mediana_2_vectori (int a[],int b[],int size){
         if(med_a==med_b)
             return med_a;
         }}
-        
+
 int main (){
    int n;
    cin>>n;
